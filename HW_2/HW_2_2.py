@@ -17,8 +17,11 @@
 # Эта задача намного серьёзнее, чем может сначала показаться.
 
 main_array = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
-print(ord(main_array.index("+")))
+count = 0
 for check_element in main_array:
     if check_element.isdigit():
-        if 0 < int(check_element) // 1 <= 9:
-            print(check_element)
+        print(check_element)  # if 0 < int(check_element) // 1 <= 9:
+    if (check_element[0] == "-" or "+") and check_element[1:].isdigit():
+        print(check_element)
+count += 1
+
