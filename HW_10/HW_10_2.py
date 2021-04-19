@@ -2,57 +2,36 @@ from abc import ABC, abstractmethod
 
 
 class Clothes(ABC):
+    def __init__(self, param):
+        self.param = round(param, 2)
+
     @abstractmethod
     def amount_of_material(self):
-        pass
-
-    @abstractmethod
-    def __add__(self, other):
-        pass
-
-    @abstractmethod
-    def __str__(self):
         pass
 
 
 class Coat(Clothes):
-
-    def __init__(self, param):
-        self.v = round(param, 2)
-
     @property
     def amount_of_material(self):
-        return round((self.v / 6.5 + 0.5), 2)
+        return round((self.param / 6.5 + 0.5), 2)
 
     def __add__(self, other):
-        return Coat(self.amount_of_material + other.amount_of_material)
-
-    def __str__(self):
-        return str(self.v)
+        return self.amount_of_material + other.amount_of_material
 
 
 class Costume(Clothes):
-    def __init__(self, param):
-        self.h = round(param, 2)
-
     @property
     def amount_of_material(self):
-        return round((self.h * 2 + 0.3), 2)
+        return round((self.param * 2 + 0.3), 2)
 
     def __add__(self, other):
-        return Costume(self.amount_of_material + other.amount_of_material)
-
-    def __str__(self):
-        return str(self.h)
+        return self.amount_of_material + other.amount_of_material
 
 
-coa_1 = Coat(50)
-print(coa_1.amount_of_material)
+coa = Coat(50)
+print(coa.amount_of_material)
 
-cos_1 = Costume(50)
-print(cos_1.amount_of_material)
+cos = Costume(50)
+print(cos.amount_of_material)
 
-coa_2 = Coat(20)
-print(coa_2.amount_of_material)
-
-print(coa_1 + cos_1 + coa_2)
+print(coa + cos)
